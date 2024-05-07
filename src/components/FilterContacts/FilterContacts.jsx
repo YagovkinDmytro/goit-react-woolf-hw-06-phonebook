@@ -1,7 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from '../../redux/filterContacts/slice';
 
 const FilterContacts = () => {
-  const { contacts } = useSelector(state => state.contacts);
+  const { filter } = useSelector(state => state.filter);
+  console.log(filter);
+  const dispatch = useDispatch();
+
+  const handleChange = ({ target: { value, name } }) => {
+    if (name === 'filter') {
+      dispatch(setFilter(value));
+    }
+  };
 
   return (
     <div className="search-container">
@@ -9,8 +18,8 @@ const FilterContacts = () => {
         Find contacts by name
       </label>
       <input
-        value={'stateFilter'}
-        onChange={evt => {}}
+        value={filter}
+        onChange={evt => handleChange(evt)}
         className="form-imput"
         type="text"
         id="filter"
