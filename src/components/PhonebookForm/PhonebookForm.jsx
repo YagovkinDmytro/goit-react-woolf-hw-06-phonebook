@@ -37,7 +37,10 @@ const PhonebookForm = () => {
     }
   };
 
-  const resetForm = () => {};
+  const resetForm = () => {
+    setName('');
+    setNumber('');
+  };
 
   return (
     <>
