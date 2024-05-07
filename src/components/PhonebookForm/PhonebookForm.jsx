@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addContact } from '../../redux/contacts/slice';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
@@ -6,7 +9,7 @@ const PhonebookForm = () => {
 
   const handleFormSubmit = evt => {
     evt.preventDefault();
-    // handleSubmit(name, number);
+    createNewContact(name, number);
     resetForm();
   };
 
@@ -19,9 +22,21 @@ const PhonebookForm = () => {
     }
   };
 
-  const resetForm = () => {
-    setName('');
-    setNumber('');
+  const resetForm = () => {};
+
+  const contacts = useSelector(state => state.contacts.contacts);
+  const dispatch = useDispatch();
+
+  const createNewContact = (name, number) => {
+    const isExist = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isExist) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+    const loginInputId = nanoid();
+    dispatch(addContact({ id: loginInputId, name, number }));
   };
 
   return (
