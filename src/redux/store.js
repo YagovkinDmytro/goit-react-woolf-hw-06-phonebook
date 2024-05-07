@@ -1,5 +1,11 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './rootReducer';
+
+export const store = configureStore({ reducer: rootReducer });
+/////////////////////////////////////////////////
+
+// import { createStore } from 'redux';
+// import { rootReducer } from './rootReducer';
 
 // {
 //   contacts: [],
@@ -13,7 +19,7 @@ import { rootReducer } from './rootReducer';
 //   else return state;
 // };
 
-export const store = createStore(rootReducer);
+// export const store = createStore(rootReducer);
 
 // console.log(store.getState());
 
