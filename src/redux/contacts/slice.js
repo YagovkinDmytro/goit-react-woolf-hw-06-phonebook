@@ -19,6 +19,9 @@ const contactsList = createSlice({
     addContact: (state, { payload }) => {
       return { ...state, contacts: [...state.contacts, payload] };
     },
+    deleteContact: (state, { payload }) => {
+      return { ...state, contacts: [...state.contacts, payload] };
+    },
   },
 });
 

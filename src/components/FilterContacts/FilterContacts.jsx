@@ -1,12 +1,16 @@
-const FilterContacts = ({ stateFilter, handleChange }) => {
+import { useSelector } from 'react-redux';
+
+const FilterContacts = () => {
+  const { contacts } = useSelector(state => state.contacts);
+
   return (
     <div className="search-container">
       <label htmlFor="filter" className="search-lable">
         Find contacts by name
       </label>
       <input
-        value={stateFilter}
-        onChange={evt => handleChange(evt)}
+        value={'stateFilter'}
+        onChange={evt => {}}
         className="form-imput"
         type="text"
         id="filter"

@@ -1,13 +1,17 @@
-const ContactsList = ({ contactsArr, handleDelete }) => {
+import { useSelector } from 'react-redux';
+
+const ContactsList = () => {
+  const { contacts } = useSelector(state => state.contacts);
+
   return (
     <ul>
-      {contactsArr.map(({ id, name, number }) => (
+      {contacts.map(({ id, name, number }) => (
         <li className="contact-list-item" key={id}>
           {name}: {number}
           <button
             className="contact-button delete"
             type="button"
-            onClick={() => handleDelete(id)}
+            onClick={() => {}}
           >
             Delete
           </button>
