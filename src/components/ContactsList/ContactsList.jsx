@@ -11,7 +11,7 @@ const ContactsList = () => {
     dispatch(deleteContact(id));
   };
 
-  const setfilterContacts = () => {
+  const setFilterContacts = () => {
     return contacts.filter(contact =>
       contact.name.toLowerCase().startsWith(filter.toLowerCase())
     );
@@ -19,7 +19,7 @@ const ContactsList = () => {
 
   return (
     <ul>
-      {setfilterContacts().map(({ id, name, number }) => (
+      {setFilterContacts().map(({ id, name, number }) => (
         <li className="contact-list-item" key={id}>
           {name}: {number}
           <button
