@@ -7,6 +7,21 @@ const PhonebookForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const contacts = useSelector(state => state.contacts.contacts);
+  const dispatch = useDispatch();
+
+  const createNewContact = (name, number) => {
+    const isExist = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isExist) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+    const loginInputId = nanoid();
+    dispatch(addContact({ id: loginInputId, name, number }));
+  };
+
   const handleFormSubmit = evt => {
     evt.preventDefault();
     createNewContact(name, number);
@@ -23,21 +38,6 @@ const PhonebookForm = () => {
   };
 
   const resetForm = () => {};
-
-  const contacts = useSelector(state => state.contacts.contacts);
-  const dispatch = useDispatch();
-
-  const createNewContact = (name, number) => {
-    const isExist = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-    if (isExist) {
-      alert(`${name} is already in contacts.`);
-      return;
-    }
-    const loginInputId = nanoid();
-    dispatch(addContact({ id: loginInputId, name, number }));
-  };
 
   return (
     <>
