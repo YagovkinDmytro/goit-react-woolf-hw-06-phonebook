@@ -20,12 +20,3 @@ export const App = () => {
     </div>
   );
 };
-
-// function getLocalStorage() {
-//   const localData = JSON.parse(localStorage.getItem('contacts'));
-//   return localData && localData.length > 0 ? localData : [];
-// }
-
-// useEffect(() => {
-//   localStorage.setItem('contacts', JSON.stringify(contacts));
-// }, [contacts]);
