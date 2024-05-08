@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addContact } from '../../redux/contacts/slice';
+import { getContacts } from '../../redux/selectors';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const { contacts } = useSelector(state => state.contacts);
+  const { contacts } = useSelector(getContacts);
 
   const dispatch = useDispatch();
 
